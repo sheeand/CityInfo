@@ -171,6 +171,20 @@ namespace CityInfo.API.Controllers
 
             patchDoc.ApplyTo(pointOfInterestToPatch, ModelState);
 
+            // Is the PointOfInterest request coming in valid?
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (pointOfInterestToPatch.Name == pointOfInterestToPatch.Description)
+            {
+                ModelState.AddModelError("Description", "The Description should be different than the Name");
+            }
+
+            TryValidateModel(pointOfInterestToPatch);
+
+            // Is PointOfInterestForUpdateDto still valid after PatchDocument request has been appled?
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
