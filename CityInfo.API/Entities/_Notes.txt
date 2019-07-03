@@ -1,0 +1,7 @@
+﻿Enitity models are for storing data, and should replicate the database
+They will be adorned with attributes such as primary keys, forgign key relationships, identites, and max. string lengths for varchars.
+
+DbContext
+There's no need for all the entities that map to tables in a database to be in the same context. Multiple contexts can work on the same database. In our case, well, we only have two entities, so one context is sufficient.
+On this context we now want to define DbSets for our entities. Such a DbSet can be used to query and save instances of its entity type. LINQ queries against a DbSet will be translated into queries against the database. Our application will use this context, so we need to register it so it's available for dependency injection.
+This is a code-first approach for a new database. In order to generate the database if it doesn't exist yet, we call EnsureCreated() on the database object to the constructor that will be used when requesting an instance from the container through dependency injection. This database object is defined on DBContext. If the database already exists, nothing will happen, but if it doesn't, this call ensures it is effectively created. 

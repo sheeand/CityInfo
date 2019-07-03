@@ -1,0 +1,7 @@
+﻿
+
+Use appSettings file for storing the connection string during development.  
+
+To safely store connection string for production:
+Use the environment variables you set on your project properties in the launchSettings file. 
+Once you roll out to the production server, the environment variables will overwrite the appSettings.

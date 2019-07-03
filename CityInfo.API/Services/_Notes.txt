@@ -1,0 +1,13 @@
+﻿ICityInfoRepository - is the contract that our repository implementation must  adhere to
+
+Repository Pattern interface considerations - IEnumerable vs. IQueryable
+	
+
+Advantages of using IQueryable
+
+	The consumer of the repository can keep building on an IQueryable. For example, he can add an OrderBy clause or Where clause, etc., possibly before the query is executed.
+	When building an API with a huge set of data-shaping possibilities, all requiring different queries, using IQueryable avoids the task of having to write tens or hundreds of methods.
+
+Disadvantages of using IQueryable
+
+	It means that you're leaking persistence-related logic out of the repository (which seems to violate the purpose of the repository pattern)

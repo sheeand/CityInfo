@@ -1,0 +1,1 @@
+﻿Data transfer objects are for getting data from POSTs
